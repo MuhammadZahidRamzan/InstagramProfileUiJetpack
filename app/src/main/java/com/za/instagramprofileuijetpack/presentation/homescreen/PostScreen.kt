@@ -1,4 +1,4 @@
-package com.za.instagramprofileuijetpack
+package com.za.instagramprofileuijetpack.presentation.homescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,6 +34,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.za.instagramprofileuijetpack.R
+import com.za.instagramprofileuijetpack.presentation.profilescreen.RoundImage
+import com.za.instagramprofileuijetpack.presentation.Screen
 import com.za.instagramprofileuijetpack.ui.theme.StoryBack
 
 @Composable
@@ -109,7 +111,7 @@ fun TopLogoBar(
             horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Icon(
-                painter = painterResource(id = R.drawable.ic_logo),
+                painter = painterResource(id = R.drawable.instagram_logo),
                 contentDescription = null,
         )
         Row {
@@ -178,10 +180,10 @@ fun StorySection(
 
 @Composable
 fun Post(
-        modifier: Modifier = Modifier,
-        post: List<Post>,
-        onItemClick: () -> Unit,
-        onCommentlick: () -> Unit,
+    modifier: Modifier = Modifier,
+    post: List<Post>,
+    onItemClick: () -> Unit,
+    onCommentlick: () -> Unit,
 ) {
     LazyColumn(modifier = modifier.fillMaxWidth()) {
         items(post.size) {

@@ -1,4 +1,4 @@
-package com.za.instagramprofileuijetpack
+package com.za.instagramprofileuijetpack.presentation.homescreen
 
 import androidx.compose.ui.graphics.painter.Painter
 

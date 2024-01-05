@@ -1,9 +1,7 @@
-package com.za.instagramprofileuijetpack
+package com.za.instagramprofileuijetpack.presentation.commentscreen
 
-import android.widget.EditText
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,15 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,9 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.za.instagramprofileuijetpack.R
 import com.za.instagramprofileuijetpack.ui.theme.CommentTopBack
 
 @Composable
@@ -42,7 +37,8 @@ fun CommentScreen(){
         Spacer(modifier = Modifier
             .size(22.dp)
             .fillMaxWidth())
-        SingleComment(Comment(name = "zahid",
+        SingleComment(
+            Comment(name = "zahid",
             comment = "please suggest caption of my post",
             image = painterResource(id = R.drawable.pic1),
             hashTag = listOf("#firsttag","#secondtag"),
@@ -61,7 +57,8 @@ fun CommentScreen(){
             .size(18.dp)
             .fillMaxWidth())
         CommentSection(modifier = Modifier.fillMaxWidth(),
-            comments = listOf(Comment(
+            comments = listOf(
+                Comment(
                 name = "enzeto",
                 comment = "looking nice",
                 image = painterResource(id = R.drawable.pic2),
@@ -120,7 +117,7 @@ fun TopCommentBar(
 
 @Composable
 fun CommentSection(comments:List<Comment>,
-    modifier: Modifier = Modifier){
+                   modifier: Modifier = Modifier){
     LazyColumn(modifier = modifier.fillMaxWidth()){
         items(comments.size){
             SingleComment(comment = comments[it])
@@ -133,7 +130,7 @@ fun CommentSection(comments:List<Comment>,
 
 @Composable
 fun SingleComment(
-    comment:Comment,
+    comment: Comment,
     modifier: Modifier = Modifier
 ){
     Column(modifier = Modifier.fillMaxWidth()) {

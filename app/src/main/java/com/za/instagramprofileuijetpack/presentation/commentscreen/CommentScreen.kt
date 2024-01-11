@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.za.instagramprofileuijetpack.R
+import com.za.instagramprofileuijetpack.ui.theme.ButtonBack
 import com.za.instagramprofileuijetpack.ui.theme.CommentTopBack
 
 @Composable
@@ -159,7 +160,7 @@ fun SingleComment(
         Row(modifier = Modifier.padding(start = 40.dp)) {
             comment.hashTag.forEach { hashTag ->
                 Text(text = hashTag,
-                    color = Color(0xFF7171FD),
+                    color = ButtonBack,
                     fontSize = 13.sp,
                     modifier = Modifier.padding(end = 5.dp))
             }

@@ -55,48 +55,52 @@ import com.za.instagramprofileuijetpack.R
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen() {
     var selectedTabIndex by remember {
         mutableStateOf(0)
     }
-   // val scroolable = rememberScrollState()
+    // val scroolable = rememberScrollState()
     Column(modifier = Modifier.fillMaxSize()) {
-        TopBar(name = "M.Zahid Ramzan", modifier = Modifier
-            .padding(10.dp))
+        TopBar(
+            name = "M.Zahid Ramzan", modifier = Modifier
+                .padding(10.dp)
+        )
         Spacer(modifier = Modifier.height(4.dp))
         ProfileSection()
         Spacer(modifier = Modifier.height(25.dp))
         ButtonSection(modifier = Modifier.fillMaxWidth())
         Spacer(modifier = Modifier.height(25.dp))
-        HighLightSection(storyHighlight = listOf(
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic1),
-                text = "Hi"
+        HighLightSection(
+            storyHighlight = listOf(
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic1),
+                    text = "Hi"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic4),
+                    text = "abc"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic2),
+                    text = "aaa"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic6),
+                    text = "try"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic7),
+                    text = "wow"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic9),
+                    text = "git"
+                ),
             ),
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic4),
-                text = "abc"
-            ),
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic2),
-                text = "aaa"
-            ),
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic6),
-                text = "try"
-            ),
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic7),
-                text = "wow"
-            ),
-            ImageWithText(
-                image = painterResource(id = R.drawable.pic9),
-                text = "git"
-            ),
-        ),
             modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp))
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+        )
         Spacer(modifier = Modifier.height(10.dp))
         PostTabView(
             imageWithTexts = listOf(
@@ -120,7 +124,7 @@ fun ProfileScreen(){
         ) {
             selectedTabIndex = it
         }
-        when(selectedTabIndex) {
+        when (selectedTabIndex) {
             0 -> PostSection(
                 posts = listOf(
                     painterResource(id = R.drawable.pic1),
@@ -157,7 +161,8 @@ fun TopBar(
             tint = Color.Black,
             modifier = Modifier.size(25.dp)
         )
-        Text(text = name,
+        Text(
+            text = name,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
@@ -187,25 +192,26 @@ fun ProfileSection(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
         ) {
             RoundImage(
                 image = painterResource(id = R.drawable.pic4),
                 modifier = Modifier
-                        .size(100.dp)
-                        .weight(3f)
+                    .size(100.dp)
+                    .weight(3f)
             )
             Spacer(modifier = Modifier.width(16.dp))
             StatSection(modifier = Modifier.weight(7f))
         }
         ProfileDescription(
             displayName = "Programming Mentor",
-            description = "1.5 years of coding experience\n" +
-                    "Want me to make your app? Send me an email!\n" +
-                    "Follow me on LinkedIn",
-            url = "https://www.linkedin.com/in/zahid-ramzan-0a4a93220/",
-            followedBy = listOf("codinginflow", "phlip","abv"),
+            description = "1.5 years of coding experience",
+//                    "\n" +
+//                    "Want me to make your app? Send me an email!\n" +
+//                    "Follow me on LinkedIn",
+            //    url = "https://www.linkedin.com/in/zahid-ramzan-0a4a93220/",
+            followedBy = listOf("codinginflow", "phlip", "abv"),
             otherCount = 17
         )
     }
@@ -221,14 +227,14 @@ fun RoundImage(
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier = modifier
-                .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                .border(
-                        width = 1.dp,
-                        color = Color.LightGray,
-                        shape = CircleShape
-                )
-                .padding(3.dp)
-                .clip(CircleShape)
+            .aspectRatio(1f, matchHeightConstraintsFirst = true)
+            .border(
+                width = 1.dp,
+                color = Color.LightGray,
+                shape = CircleShape
+            )
+            .padding(3.dp)
+            .clip(CircleShape)
     )
 }
 
@@ -270,7 +276,7 @@ fun ProfileStat(
 fun ProfileDescription(
     displayName: String,
     description: String,
-    url: String,
+    //  url: String,
     followedBy: List<String>,
     otherCount: Int
 ) {
@@ -278,8 +284,8 @@ fun ProfileDescription(
     val lineHeight = 20.sp
     Column(
         modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp)
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
     ) {
         Text(
             text = displayName,
@@ -292,13 +298,13 @@ fun ProfileDescription(
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
-        Text(
-            text = url,
-            color = Color(0xFF3D3D91),
-            letterSpacing = letterSpacing,
-            lineHeight = lineHeight
-        )
-        if(followedBy.isNotEmpty()) {
+//        Text(
+//            text = url,
+//            color = Color(0xFF3D3D91),
+//            letterSpacing = letterSpacing,
+//            lineHeight = lineHeight
+//        )
+        if (followedBy.isNotEmpty()) {
             Text(
                 text = buildAnnotatedString {
                     val boldStyle = SpanStyle(
@@ -310,11 +316,11 @@ fun ProfileDescription(
                         pushStyle(boldStyle)
                         append(name)
                         pop()
-                        if(index < followedBy.size - 1) {
+                        if (index < followedBy.size - 1) {
                             append(", ")
                         }
                     }
-                    if(otherCount > 2) {
+                    if (otherCount > 2) {
                         append(" and ")
                         pushStyle(boldStyle)
                         append("$otherCount others")
@@ -326,10 +332,11 @@ fun ProfileDescription(
         }
     }
 }
+
 @Composable
 fun ButtonSection(
     modifier: Modifier = Modifier
-){
+) {
     val minWidth = 95.dp
     val height = 30.dp
     Row(
@@ -340,26 +347,26 @@ fun ButtonSection(
             text = "Following",
             icon = Icons.Default.KeyboardArrowDown,
             modifier = Modifier
-                    .defaultMinSize(
-                            minWidth = minWidth
-                    )
-                    .height(height)
+                .defaultMinSize(
+                    minWidth = minWidth
+                )
+                .height(height)
         )
         ActionButton(
             text = "Message",
             modifier = Modifier
-                    .defaultMinSize(
-                            minWidth = minWidth
-                    )
-                    .height(height)
+                .defaultMinSize(
+                    minWidth = minWidth
+                )
+                .height(height)
         )
         ActionButton(
             text = "Email",
             modifier = Modifier
-                    .defaultMinSize(
-                            minWidth = minWidth
-                    )
-                    .height(height)
+                .defaultMinSize(
+                    minWidth = minWidth
+                )
+                .height(height)
         )
         ActionButton(
             icon = Icons.Default.KeyboardArrowDown,
@@ -374,24 +381,26 @@ fun ActionButton(
     modifier: Modifier = Modifier,
     text: String? = null,
     icon: ImageVector? = null
-){
+) {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-                .border(
-                        width = 1.dp,
-                        color = Color.LightGray,
-                        shape = RoundedCornerShape(5.dp)
-                )
-                .padding(6.dp)
+            .border(
+                width = 1.dp,
+                color = Color.LightGray,
+                shape = RoundedCornerShape(5.dp)
+            )
+            .padding(6.dp)
     ) {
-        if (text!=null){
-            Text(text = text,
+        if (text != null) {
+            Text(
+                text = text,
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 14.sp)
+                fontSize = 14.sp
+            )
         }
-        if (icon !=null){
+        if (icon != null) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
@@ -401,19 +410,21 @@ fun ActionButton(
 
     }
 }
+
 @Composable
 fun HighLightSection(
     modifier: Modifier = Modifier,
     storyHighlight: List<ImageWithText>
-){
-    LazyRow(modifier = modifier){
-        items(storyHighlight.size){
+) {
+    LazyRow(modifier = modifier) {
+        items(storyHighlight.size) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.padding(end = 15.dp)
             ) {
-                RoundImage(image = storyHighlight[it].image,
+                RoundImage(
+                    image = storyHighlight[it].image,
                     modifier = Modifier.size(70.dp)
                 )
                 Text(
@@ -427,6 +438,7 @@ fun HighLightSection(
     }
 
 }
+
 @Composable
 fun PostTabView(
     modifier: Modifier = Modifier,
@@ -455,15 +467,16 @@ fun PostTabView(
                 Icon(
                     painter = item.image,
                     contentDescription = item.text,
-                    tint = if(selectedTabIndex == index) Color.Black else inactiveColor,
+                    tint = if (selectedTabIndex == index) Color.Black else inactiveColor,
                     modifier = Modifier
-                            .padding(10.dp)
-                            .size(20.dp)
+                        .padding(10.dp)
+                        .size(20.dp)
                 )
             }
         }
     }
 }
+
 @ExperimentalFoundationApi
 @Composable
 fun PostSection(
@@ -481,12 +494,13 @@ fun PostSection(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                        .aspectRatio(1f)
-                        .border(
-                                width = 1.dp,
-                                color = Color.White
-                        )
+                    .aspectRatio(1f)
+                    .border(
+                        width = 1.dp,
+                        color = Color.White
+                    )
             )
         }
     }
 }
+

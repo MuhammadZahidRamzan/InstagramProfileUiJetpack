@@ -31,70 +31,88 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.za.instagramprofileuijetpack.R
+import com.za.instagramprofileuijetpack.presentation.navigation.Screen
 import com.za.instagramprofileuijetpack.presentation.profilescreen.RoundImage
-import com.za.instagramprofileuijetpack.presentation.Screen
 import com.za.instagramprofileuijetpack.ui.theme.StoryBack
 
 @Composable
 fun PostScreen(navController: NavController) {
     Column(modifier = Modifier.fillMaxSize()) {
-        TopLogoBar(modifier = Modifier.padding(20.dp))
-        StorySection(
-                modifier = Modifier.padding(bottom = 5.dp), storyHighlight = listOf(
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic1),
-                        text = "Your Story"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic2),
-                        text = "abc"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic3),
-                        text = "ag"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic4),
-                        text = "hi"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic5),
-                        text = "gh"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic6),
-                        text = "lol"
-                ),
-                ImageWithText(
-                        image = painterResource(id = R.drawable.pic1),
-                        text = "light"
-                ),
+        TopLogoBar()
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .size(1.dp)
+                .background(Color.LightGray)
         )
+        StorySection(
+            modifier = Modifier.padding(bottom = 5.dp, top = 12.dp),
+            storyHighlight = listOf(
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic1),
+                    text = "Your Story"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic2),
+                    text = "abc"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic3),
+                    text = "ag"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic4),
+                    text = "hi"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic5),
+                    text = "gh"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic6),
+                    text = "lol"
+                ),
+                ImageWithText(
+                    image = painterResource(id = R.drawable.pic1),
+                    text = "light"
+                ),
+            )
         )
         Post(
-                post = listOf(
-                        Post(
-                                name = "Zahid",
-                                address = "bwp",
-                                image = painterResource(id = R.drawable.pic1),
-                                profileImage = painterResource(id = R.drawable.pic1)
-                        ),
-                        (Post(
-                                name = "Zahid", address = "bwp",
-                                image = painterResource(id = R.drawable.pic1),
-                                profileImage = painterResource(id = R.drawable.pic1)
-                        ))
+            post = listOf(
+                Post(
+                    name = "eagle",
+                    address = "los angles",
+                    image = painterResource(id = R.drawable.pic2),
+                    profileImage = painterResource(id = R.drawable.pic2)
                 ),
-                onItemClick = {
-                    navController.navigate(Screen.ProfileScreen.route)
-                },
-                onCommentlick = {
-                    navController.navigate(Screen.CommentScreen.route)
-                }
+                (Post(
+                    name = "Tiger", address = "Islamabad",
+                    image = painterResource(id = R.drawable.pic4),
+                    profileImage = painterResource(id = R.drawable.pic4)
+                )),
+                (Post(
+                    name = "Unknown", address = "Islamabad",
+                    image = painterResource(id = R.drawable.pic5),
+                    profileImage = painterResource(id = R.drawable.pic5)
+                )),
+                (Post(
+                    name = "Cat", address = "Islamabad",
+                    image = painterResource(id = R.drawable.pic6),
+                    profileImage = painterResource(id = R.drawable.pic6)
+                ))
+            ),
+            onItemClick = {
+              //  navController.navigate(Screen.ProfileScreen.route)
+            },
+            onCommentlick = {
+                navController.navigate(Screen.CommentScreen.route)
+            }
         )
     }
 
@@ -103,37 +121,47 @@ fun PostScreen(navController: NavController) {
 
 @Composable
 fun TopLogoBar(
-        modifier: Modifier = Modifier
 ) {
     Row(
-            modifier = modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 12.dp, end = 12.dp, top = 16.dp, bottom = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Icon(
-                painter = painterResource(id = R.drawable.instagram_logo),
-                contentDescription = null,
+            painter = painterResource(id = R.drawable.camera_logo),
+            contentDescription = null,
+            modifier = Modifier.padding(end = 12.dp)
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.instagram_logo_small),
+            contentDescription = null,
         )
         Row {
-            Icon(
-                    painter = painterResource(id = R.drawable.ic_newphoto),
+            Box(
+                modifier = Modifier,
+                contentAlignment = Alignment.TopEnd
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.video_logo),
                     contentDescription = null,
-                    tint = Color.Black,
                     modifier = Modifier.size(25.dp)
-            )
+                )
+                Icon(
+                    painter = painterResource(id = R.drawable.oval),
+                    contentDescription = null,
+                    tint = Color.Red,
+                    modifier = Modifier.padding(start = 5.dp, top = 2.dp)
+                )
+            }
+
             Spacer(modifier = Modifier.size(16.dp))
             Icon(
-                    painter = painterResource(id = R.drawable.ic_like),
-                    contentDescription = null,
-                    tint = Color.Black,
-                    modifier = Modifier.size(25.dp)
-            )
-            Spacer(modifier = Modifier.size(16.dp))
-            Icon(
-                    painter = painterResource(id = R.drawable.ic_share),
-                    contentDescription = null,
-                    tint = Color.Black,
-                    modifier = Modifier.size(25.dp)
+                painter = painterResource(id = R.drawable.ic_share),
+                contentDescription = null,
+                tint = Color.Black,
+                modifier = Modifier.size(25.dp)
             )
         }
 
@@ -144,34 +172,34 @@ fun TopLogoBar(
 
 @Composable
 fun StorySection(
-        modifier: Modifier = Modifier,
-        storyHighlight: List<ImageWithText>
+    modifier: Modifier = Modifier,
+    storyHighlight: List<ImageWithText>
 ) {
-    LazyRow(modifier = modifier) {
+    LazyRow(modifier = modifier.padding(start = 10.dp)) {
         items(storyHighlight.size) {
             Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.padding(end = 8.dp)
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(end = 8.dp)
             ) {
                 RoundImage(
-                        image = storyHighlight[it].image,
-                        modifier = Modifier
-                                .size(75.dp)
-                                .border(
-                                        width = 2.dp,
-                                        color = StoryBack,
-                                        shape = CircleShape
-                                )
-                                .padding(1.5.dp)
+                    image = storyHighlight[it].image,
+                    modifier = Modifier
+                        .size(width = 56.dp, height = 56.dp)
+                        .border(
+                            width = 2.dp,
+                            color = StoryBack,
+                            shape = CircleShape
+                        )
+                        .padding(1.5.dp)
                 )
                 Text(
-                        text = storyHighlight[it].text,
-                        overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.Center,
-                        fontSize = 12.sp,
-                        modifier = Modifier.padding(top = 2.dp),
-                        fontWeight = FontWeight.SemiBold
+                    text = storyHighlight[it].text,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(top = 2.dp),
+                    fontWeight = FontWeight.Normal
                 )
             }
         }
@@ -188,79 +216,83 @@ fun Post(
     LazyColumn(modifier = modifier.fillMaxWidth()) {
         items(post.size) {
             Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
             ) {
                 Box(
-                        modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = 5.dp)
-                                .background(Color.White)
-                                .shadow(1.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 5.dp)
+                        .background(Color.White)
+                        .shadow(1.dp)
                 ) {
                     Column(modifier = Modifier.fillMaxWidth()) {
                         Row(
-                                modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(start = 5.dp, end = 8.dp, top = 10.dp, bottom = 10.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 10.dp, vertical = 11.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Row(modifier = Modifier.padding(start = 3.dp)) {
                                 Image(
-                                        painter = post[it].image!!,
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Crop,            // crop the image if it's not a square
-                                        modifier = Modifier
-                                                .size(32.dp)
-                                                .clip(CircleShape)
-                                                .clickable {
-                                                    onItemClick()
-                                                },
+                                    painter = post[it].image!!,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Crop,            // crop the image if it's not a square
+                                    modifier = Modifier
+                                        .size(width = 32.dp , height = 32.dp)
+                                        .clip(CircleShape)
+                                        .clickable {
+                                            onItemClick()
+                                        },
                                 )
-                                Column(modifier = Modifier.padding(start = 3.dp)) {
+                                Column(modifier = Modifier.padding(start = 10.dp)) {
                                     Text(
-                                            text = post[it].name!!,
-                                            fontWeight = FontWeight.ExtraBold,
-                                            fontSize = 12.sp,
-                                            color = Color.Black
+                                        text = post[it].name!!,
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontSize = 13.sp,
+                                        color = Color.Black
                                     )
                                     Text(
-                                            text = post[it].address!!,
-                                            fontSize = 11.sp
+                                        text = post[it].address!!,
+                                        fontSize = 11.sp
                                     )
                                 }
                             }
                             Icon(
-                                    painter = painterResource(id = R.drawable.ic_more),
-                                    contentDescription = null
+                                painter = painterResource(id = R.drawable.ic_more),
+                                contentDescription = null
                             )
                         }
                         Image(
-                                painter = post[it].profileImage!!, contentDescription = null,
-                                modifier = Modifier
-                                        .fillMaxWidth()
+                            painter = post[it].profileImage!!, contentDescription = null,
+                            modifier = Modifier
+                                .fillMaxWidth()
                         )
                         LikeCommentSection() {
                             onCommentlick()
                         }
                         Text(
-                                text = buildAnnotatedString {
-                                    val boldStyle = SpanStyle(
-                                            color = Color.Black,
-                                            fontWeight = FontWeight.Bold
-                                    )
-                                    append("Followed by ")
-                                    pushStyle(boldStyle)
-                                    append("zahid")
-                                    pop()
-                                    append(", ")
-                                    pushStyle(boldStyle)
-                                    append("awais")
-                                    pop()
-                                    append(" and others")
-                                }, Modifier.padding(start = 8.dp, end = 8.dp, top = 5.dp, bottom = 8.dp),
-                                fontSize = 13.sp
+                            text = buildAnnotatedString {
+                                val boldStyle = SpanStyle(
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                append("Liked by ")
+                                pushStyle(boldStyle)
+                                append("zahid")
+                                pop()
+                                append(", ")
+                                pushStyle(boldStyle)
+                                append("awais")
+                                pop()
+                                append(" and")
+                                pushStyle(boldStyle)
+                                append(" 444 others")
+                                pop()
+                            },
+                            Modifier.padding(start = 8.dp, end = 8.dp, top = 5.dp, bottom = 8.dp),
+                            fontSize = 13.sp
 
                         )
                     }
@@ -272,41 +304,47 @@ fun Post(
 
 @Composable
 fun LikeCommentSection(
-        modifier: Modifier = Modifier,
-        onItemClick: () -> Unit
+    modifier: Modifier = Modifier,
+    onItemClick: () -> Unit
 ) {
     Row(
-            modifier = modifier
-                    .fillMaxWidth()
-                    .padding(start = 8.dp, top = 8.dp, end = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 14.dp , vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row {
             Icon(
-                    painter = painterResource(id = R.drawable.ic_filheart),
-                    tint = Color.Red,
-                    contentDescription = null,
+                painter = painterResource(id = R.drawable.ic_filheart),
+                tint = Color.Red,
+                contentDescription = null,
             )
-            Spacer(modifier = Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(14.dp))
             Icon(
-                    painter = painterResource(id = R.drawable.ic_commentt),
-                    contentDescription = null,
-                    tint = Color.Black,
-                    modifier = Modifier.clickable {
-                        onItemClick()
-                    }
+                painter = painterResource(id = R.drawable.ic_commentt),
+                contentDescription = null,
+                tint = Color.Black,
+                modifier = Modifier.clickable {
+                    onItemClick()
+                }
             )
-            Spacer(modifier = Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(14.dp))
             Icon(
-                    painter = painterResource(id = R.drawable.ic_share),
-                    contentDescription = null,
-                    tint = Color.Black,
+                painter = painterResource(id = R.drawable.ic_share),
+                contentDescription = null,
+                tint = Color.Black,
             )
         }
         Icon(
-                painter = painterResource(id = R.drawable.ic_save),
-                contentDescription = null,
+            painter = painterResource(id = R.drawable.ic_save),
+            contentDescription = null,
         )
     }
+}
+
+@Preview
+@Composable
+fun TopBarPreview() {
+    TopLogoBar()
 }

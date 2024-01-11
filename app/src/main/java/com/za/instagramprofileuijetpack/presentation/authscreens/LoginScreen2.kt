@@ -24,32 +24,26 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.za.instagramprofileuijetpack.R
-import com.za.instagramprofileuijetpack.presentation.Screen
+import com.za.instagramprofileuijetpack.presentation.navigation.Screen
 import com.za.instagramprofileuijetpack.ui.theme.ButtonBack
-import com.za.instagramprofileuijetpack.ui.theme.CommentTopBack
 import com.za.instagramprofileuijetpack.ui.theme.TextFieldBack
 
 @Composable
 fun LoginScreen2(navController: NavController) {
     LoginView2(
         onItemClick = {navController.popBackStack()},
-        onButtonClicked = {navController.navigate(Screen.PostScreen.route)}
+        onButtonClicked = {navController.navigate(Screen.MainScreen.route)}
     )
 }
 @OptIn(ExperimentalMaterial3Api::class)
